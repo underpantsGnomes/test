@@ -1,0 +1,26 @@
+CREATE TABLE IF NOT EXISTS `author` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(256) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+INSERT INTO `author` (`id`, `name`) VALUES
+(1, 'Ремарк'),
+(2, 'Драйзер');
+
+
+CREATE TABLE IF NOT EXISTS `book` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `author` int(11) NOT NULL,
+  `name` varchar(256) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `author` (`author`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+
+INSERT INTO `book` (`id`, `author`, `name`) VALUES
+(1, 1, 'Три товарища'),
+(2, 2, 'Американская трагедия');
+
+ALTER TABLE `book`
+  ADD CONSTRAINT `book_ibfk_1` FOREIGN KEY (`author`) REFERENCES `author` (`id`);
