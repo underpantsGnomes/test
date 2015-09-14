@@ -52,7 +52,7 @@ class SiteController extends Controller
     public function actionIndex()
     {
 
-        $dataProvider = new library();
+        $dataProvider = new Library();
         return $this->render('index', [
             'dataProvider' => $dataProvider->relation()
         ]);

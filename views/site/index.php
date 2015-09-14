@@ -2,6 +2,7 @@
 
 /* @var $this yii\web\View */
 use yii\grid\GridView;
+
 $this->title = 'My Yii Application';
 ?>
 <div class="site-index">
@@ -11,7 +12,10 @@ $this->title = 'My Yii Application';
         <?php
         echo GridView::widget([
         'dataProvider' => $dataProvider,
-
+            'columns' => [
+                'authorName',
+                'bookName'
+                ]
         ]);
         ?>
     </div>

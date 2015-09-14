@@ -9,7 +9,9 @@ use Yii;
  *
  * @property integer $id
  * @property integer $author
- * @property string $name
+ * @property string $bookName
+ *
+ * @property string $authorName
  */
 class Book extends \yii\db\ActiveRecord
 {
@@ -27,9 +29,9 @@ class Book extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['author', 'name'], 'required'],
-            [['author.name'], 'safe'],
-            [['name'], 'string', 'max' => 256]
+            [['bookName','authorName'], 'required'],
+
+            [['bookName'], 'string', 'max' => 256]
         ];
     }
 
@@ -38,20 +40,20 @@ class Book extends \yii\db\ActiveRecord
      */
     public function attributeLabels()
     {
-
         return [
             'id' => 'ID',
-            'author' => 'Author',
-            'name' => 'Name',
-            'author.name' => 'Author name'
+            'bookName' => 'Book Name',
         ];
     }
     public function attributes()
     {
-
-        return array_merge(Author::attributes(), ['author.name']);
+        // add related fields to searchable attributes
+        return array_merge(parent::attributes(), ['authorName']);
     }
 
+    /**
+     * @return \yii\db\ActiveQuery
+     */
     public function getAuthor()
     {
         return $this->hasMany(Author::className(), ['id' => 'author']);
