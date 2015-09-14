@@ -6,12 +6,12 @@ use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
-use app\models\LoginForm;
-use app\models\Book;
-use app\models\Author;
-use app\models\ContactForm;
 
-use yii\data\ActiveDataProvider;
+use app\models\Book;
+use app\models\Library;
+
+
+
 
 class SiteController extends Controller
 {
@@ -53,19 +53,10 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-        $query = Book::find()
-            ->addSelect(['book.*','author.*']);
 
-        $dataProvider = new ActiveDataProvider([
-            'query' => $query,
-        ]);
-        $query->joinWith(['author' => function ($query) {
-            $query->from(['author']);
-        }]);
-
+        $dataProvider = new library();
         return $this->render('index', [
-            'dataProvider' => $dataProvider,
-            'model' =>  $query
+            'dataProvider' => $dataProvider->relation()
         ]);
     }
 
