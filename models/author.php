@@ -10,7 +10,6 @@ use Yii;
  * @property integer $id
  * @property string $authorName
  *
- * @property Book[] $books
  */
 class Author extends \yii\db\ActiveRecord
 {
@@ -43,5 +42,6 @@ class Author extends \yii\db\ActiveRecord
             'authorName' => 'Author Name',
         ];
     }
+
 
 }

@@ -12,6 +12,7 @@ $this->title = 'My Yii Application';
         <?php
         echo GridView::widget([
         'dataProvider' => $dataProvider,
+
             'columns' => [
                 'authorName',
                 'bookName'
