@@ -10,10 +10,8 @@ use Yii;
  * @property integer $id
  * @property integer $author
  * @property string $name
- *
- * @property Author $author0
  */
-class book extends \yii\db\ActiveRecord
+class Book extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
@@ -30,7 +28,7 @@ class book extends \yii\db\ActiveRecord
     {
         return [
             [['author', 'name'], 'required'],
-            [['author'], 'integer'],
+            [['author.name'], 'safe'],
             [['name'], 'string', 'max' => 256]
         ];
     }
@@ -40,18 +38,22 @@ class book extends \yii\db\ActiveRecord
      */
     public function attributeLabels()
     {
+
         return [
             'id' => 'ID',
             'author' => 'Author',
             'name' => 'Name',
+            'author.name' => 'Author name'
         ];
     }
+    public function attributes()
+    {
 
-    /**
-     * @return \yii\db\ActiveQuery
-     */
+        return array_merge(Author::attributes(), ['author.name']);
+    }
+
     public function getAuthor()
     {
-        return $this->hasOne(Author::className(), ['id' => 'author']);
+        return $this->hasMany(Author::className(), ['id' => 'author']);
     }
 }

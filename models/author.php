@@ -9,10 +9,8 @@ use Yii;
  *
  * @property integer $id
  * @property string $name
- *
- * @property Book[] $books
  */
-class author extends \yii\db\ActiveRecord
+class Author extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
@@ -40,15 +38,8 @@ class author extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
+            'Author.name' => 'Author.Name',
         ];
     }
 
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getBooks()
-    {
-        return $this->hasMany(Book::className(), ['author' => 'id']);
-    }
 }
