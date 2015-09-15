@@ -34,7 +34,7 @@ class SuperPremium extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['manager', 'client', 'place', 'cityId', 'date', 'comm', 'shop', 'seller', 'sellerPhone','last_name','users.last_name'], 'required'],
+            [['manager', 'client', 'place', 'cityId', 'date', 'comm', 'shop', 'seller', 'sellerPhone','last_name','users.last_name','users.first_name'], 'required'],
             [['manager', 'client', 'cityId'], 'integer'],
             [['date'], 'string'],
             [['place', 'comm', 'shop', 'seller'], 'string', 'max' => 255],
@@ -64,12 +64,15 @@ class SuperPremium extends \yii\db\ActiveRecord
     public function attributes()
     {
 
-        return array_merge(Users::attributes(), ['last_name']);
+        return array_merge(Users::attributes(), ['first_name','last_name']);
     }
+
     public function getUsers()
     {
-        return $this->hasMany(Users::className(), ['id_user' => 'client']);
+        return $this->hasMany(Users::className(), ['id_user' => 'client', 'manager' => 'id_user']);
     }
+
+
     public function getTradeMarks($client){
         $tm = SuperPremiumTM::find()
             ->asArray()
@@ -85,9 +88,6 @@ class SuperPremium extends \yii\db\ActiveRecord
             $tms .= '<span class="lead label tm">'.$value['tm_name'].'</span> ';
         };
         return $tms;
-    }
-    public function getFullName() {
-        return $this->first_name . ' ' . $this->last_name;
     }
     public function getUserUr($id){
         $users = Users::find()

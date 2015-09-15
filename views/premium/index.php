@@ -27,48 +27,48 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\ActionColumn',
                 'headerOptions' => ['width' => '10']
             ],
-            [
-                'label' => 'Фото',
-                'content' => function($data){
-                    $model = new SuperPremium();
-                    return '<img class="img-rounded thumbNails" src="http://zoobonus.ua/images/superPremium/'.$model->getPhoto($data->id).'">';
-                }
-            ],
-            'shop',
-            'place',
+//            [
+//                'label' => 'Фото',
+//                'content' => function($data){
+//                    $model = new SuperPremium();
+//                    return '<img class="img-rounded thumbNails" src="http://zoobonus.ua/images/superPremium/'.$model->getPhoto($data->id).'">';
+//                }
+//            ],
+//            'shop',
+//            'place',
             [
                 'label' => 'Менеджер',
-                'content' => function(){
-                    $model = new SuperPremium();
-                    return $model->getFullName();
-                }
-            ],
-            [
-                'label' => 'Клиент',
-                'content' => function(){
-                    $model = new SuperPremium();
-                    return $model->getFullName();
-                }
-            ],
-
-
-            [
-                'label' => 'Торговые марки',
-                'headerOptions' => ['width' => '80','height' => '30' ],
                 'content' => function($data){
-                    $model = new SuperPremium();
-                    return $model->getTradeMarks($data->client).'...';
+
+                    return $data->last_name.' '.$data->first_name;
                 }
             ],
-            [
-                'label' => 'Дата',
-                'contentOptions' =>function (){
-                    return ['class' => 'name'];
-                },
-                'value' => 'date'
-            ],
-
-        ],
+//            [
+//                'label' => 'Клиент',
+//                'content' => function(){
+//                    $model = new SuperPremium();
+//                    return $model->getFullName();
+//                }
+//            ],
+//
+//
+//            [
+//                'label' => 'Торговые марки',
+//                'headerOptions' => ['width' => '80','height' => '30' ],
+//                'content' => function($data){
+//                    $model = new SuperPremium();
+//                    return $model->getTradeMarks($data->client).'...';
+//                }
+//            ],
+//            [
+//                'label' => 'Дата',
+//                'contentOptions' =>function (){
+//                    return ['class' => 'name'];
+//                },
+//                'value' => 'date'
+//            ],
+//
+       ],
     ]); ?>
 
 </div>
