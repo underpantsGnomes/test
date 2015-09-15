@@ -5,20 +5,20 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "author".
+ * This is the model class for table "superPremiumTM".
  *
  * @property integer $id
- * @property string $authorName
- *
+ * @property integer $client
+ * @property integer $tm
  */
-class Author extends \yii\db\ActiveRecord
+class SuperPremiumTM extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'author';
+        return 'superPremiumTM';
     }
 
     /**
@@ -27,8 +27,8 @@ class Author extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['authorName'], 'required'],
-            [['authorName'], 'string', 'max' => 256]
+            [['client', 'tm'], 'required'],
+            [['client', 'tm'], 'integer']
         ];
     }
 
@@ -39,9 +39,8 @@ class Author extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'authorName' => 'Author Name',
+            'client' => 'Client',
+            'tm' => 'Tm',
         ];
     }
-
-
 }

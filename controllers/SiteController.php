@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Author;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -53,8 +54,11 @@ class SiteController extends Controller
     {
 
         $dataProvider = new Library();
+        $books = new Author();
+
         return $this->render('index', [
-            'dataProvider' => $dataProvider->relation()
+            'dataProvider' => $dataProvider->relation(),
+            'books' =>$books->getBooks('1')
         ]);
     }
 
