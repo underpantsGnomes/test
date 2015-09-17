@@ -1,8 +1,7 @@
 <?php
 
 use app\models\SuperPremium;
-use app\models\Users;
-use yii\helpers\ArrayHelper;
+
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
@@ -18,7 +17,6 @@ $id = $model->id;
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <?php var_dump($model); ?>
     <p>
         <?= Html::a('Редактировать', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Удалить', ['delete', 'id' => $model->id], [
@@ -33,11 +31,10 @@ $id = $model->id;
 
     <?= DetailView::widget([
         'model' => $model,
-        'attributes' => [
+        ]) ?>
 
-
-        ]]) ?>
     <?php
+
     $model = new SuperPremium();
     $photos = $model->getPhotos($id);
     $photosString = null;
@@ -45,5 +42,7 @@ $id = $model->id;
         $photosString .= '<span class=""><img class="img-rounded col-lg-4" src="http://zoobonus.ua/images/superPremium/' . $value['photo'] . '"></span></span>';
     };
     echo $photosString;
+
+
     ?>
 </div>

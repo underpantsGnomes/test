@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-
+use yii\jui\DatePicker;
 /* @var $this yii\web\View */
 /* @var $model app\models\SuperPremium */
 /* @var $form yii\widgets\ActiveForm */
@@ -20,7 +20,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'cityId')->textInput() ?>
 
-    <?= $form->field($model, 'date')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model,'date')->widget(DatePicker::className()) ?>
 
     <?= $form->field($model, 'comm')->textInput(['maxlength' => true]) ?>
 

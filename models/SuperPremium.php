@@ -69,7 +69,7 @@ class SuperPremium extends \yii\db\ActiveRecord
 
     public function getUsers()
     {
-        return $this->hasMany(Users::className(), ['id_user' => 'client', 'manager' => 'id_user']);
+        return $this->hasMany(Users::className(), ['id_user' => 'client']);
     }
 
 
@@ -123,4 +123,3 @@ class SuperPremium extends \yii\db\ActiveRecord
         return $model;
     }
 }
-//<span class="glyphicon glyphicon-remove  lead delete">

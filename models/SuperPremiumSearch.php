@@ -42,10 +42,9 @@ class SuperPremiumSearch extends SuperPremium
     public function search($params)
     {
         $query = SuperPremium::find()
-            ->addSelect(['superPremium.*','users.last_name','users.first_name']);
-        $query->joinWith(['users' => function ($query) {
-            $query->from(['users']);
-        }]);
+            ->addSelect(['superPremium.*','users.last_name','users.first_name'])
+            ->joinWith(['users' => function ($query) { $query->from(['users']);}])
+            ->orderBy('id DESC');
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
 
